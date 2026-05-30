@@ -1,7 +1,6 @@
 import { expect, vi, type Mock } from "vitest";
 import type { MsgContext } from "../templating.js";
 
-/** Build a default direct-message context for get-reply tests. */
 export function buildGetReplyCtx(overrides: Partial<MsgContext> = {}): MsgContext {
   return {
     Provider: "telegram",
@@ -19,7 +18,6 @@ export function buildGetReplyCtx(overrides: Partial<MsgContext> = {}): MsgContex
   };
 }
 
-/** Build a default group-message context for get-reply tests. */
 export function buildGetReplyGroupCtx(overrides: Partial<MsgContext> = {}): MsgContext {
   return {
     Provider: "telegram",
@@ -58,7 +56,6 @@ export function buildNativeResetContext(): MsgContext {
   };
 }
 
-/** Create the default session-state fixture used by get-reply tests. */
 export function createGetReplySessionState(overrides: Record<string, unknown> = {}) {
   return {
     sessionCtx: {},
@@ -81,7 +78,6 @@ export function createGetReplySessionState(overrides: Record<string, unknown> = 
   };
 }
 
-/** Create a directive-resolution continuation fixture for get-reply tests. */
 export function createGetReplyContinueDirectivesResult(params: {
   body: string;
   abortKey: string;

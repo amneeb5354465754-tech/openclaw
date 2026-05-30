@@ -5,7 +5,6 @@ export const IOS_NODE = {
   connected: true,
 } as const;
 
-/** Build a stable iOS node-list response for CLI tests. */
 export function createIosNodeListResponse(ts: number = Date.now()) {
   return {
     ts,
