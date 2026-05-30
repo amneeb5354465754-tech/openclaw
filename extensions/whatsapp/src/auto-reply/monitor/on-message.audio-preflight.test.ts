@@ -92,33 +92,45 @@ vi.mock("openclaw/plugin-sdk/routing", () => ({
   }),
 }));
 
-import type { WebInboundMsg } from "../types.js";
+import { createTestWebInboundMessage } from "../../inbound/test-message.test-helper.js";
+import type { WebInboundMessage } from "../../inbound/types.js";
 import { createWebOnMessageHandler } from "./on-message.js";
 
-function makeAudioMsg(): WebInboundMsg {
-  return {
-    id: "msg-1",
+function makeAudioMsg(): WebInboundMessage {
+  return createTestWebInboundMessage({
+    event: { id: "msg-1", timestamp: 1700000000 },
+    payload: {
+      body: "<media:audio>",
+      media: {
+        type: "audio/ogg; codecs=opus",
+        path: "/tmp/voice.ogg",
+      },
+    },
+    platform: {
+      chatJid: "+15550000002",
+      recipientJid: "+15550000001",
+    },
     from: "+15550000002",
-    to: "+15550000001",
     accessControlPassed: true,
-    body: "<media:audio>",
+    conversationId: "+15550000002",
     chatType: "direct",
-    mediaType: "audio/ogg; codecs=opus",
-    mediaPath: "/tmp/voice.ogg",
-    timestamp: 1700000000,
     accountId: "default",
-  } as WebInboundMsg;
+  });
 }
 
-function makeGroupAudioMsg(): WebInboundMsg {
+function makeGroupAudioMsg(): WebInboundMessage {
+  const msg = makeAudioMsg();
   return {
-    ...makeAudioMsg(),
+    ...msg,
     from: "1203630@g.us",
-    chatId: "1203630@g.us",
+    platform: {
+      ...msg.platform,
+      chatJid: "1203630@g.us",
+    },
     chatType: "group",
     conversationId: "1203630@g.us",
     wasMentioned: false,
-  } as WebInboundMsg;
+  } as WebInboundMessage;
 }
 
 function makeEchoTracker() {

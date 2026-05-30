@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
-import type { WhatsAppSendResult } from "../../inbound/send-result.js";
+import { createTestWebInboundMessage } from "../../inbound/test-message.test-helper.js";
 
 let capturedDispatchParams: unknown;
 
@@ -127,15 +127,25 @@ import {
 
 type TestRoute = Parameters<typeof buildWhatsAppInboundContext>[0]["route"];
 type TestMsg = Parameters<typeof buildWhatsAppInboundContext>[0]["msg"];
-
-function acceptedSendResult(kind: "media" | "text", id: string): WhatsAppSendResult {
-  return {
-    kind,
-    messageId: id,
-    keys: [{ id }],
-    providerAccepted: true,
-  };
-}
+type TestMsgOverrides = Partial<TestMsg> & {
+  body?: string;
+  chatId?: string;
+  groupParticipants?: string[];
+  groupSubject?: string;
+  id?: string;
+  mediaPath?: string;
+  mediaType?: string;
+  mediaUrl?: string;
+  reply?: TestMsg["platform"]["reply"];
+  senderE164?: string;
+  senderJid?: string;
+  senderName?: string;
+  sendComposing?: TestMsg["platform"]["sendComposing"];
+  sendMedia?: TestMsg["platform"]["sendMedia"];
+  timestamp?: number;
+  to?: string;
+  untrustedStructuredContext?: TestMsg["payload"]["untrustedStructuredContext"];
+};
 
 function testReceipt(messageIds: string[]) {
   return {
@@ -163,21 +173,77 @@ function makeRoute(overrides: Partial<TestRoute> = {}): TestRoute {
   };
 }
 
-function makeMsg(overrides: Partial<TestMsg> = {}): TestMsg {
-  return {
-    id: "msg1",
+function makeMsg(overrides: TestMsgOverrides = {}): TestMsg {
+  const {
+    body,
+    chatId,
+    event,
+    group,
+    groupParticipants,
+    groupSubject,
+    id,
+    mediaPath,
+    mediaType,
+    mediaUrl,
+    payload,
+    platform,
+    reply,
+    senderE164,
+    senderJid,
+    senderName,
+    sendComposing,
+    sendMedia,
+    timestamp,
+    to,
+    untrustedStructuredContext,
+    ...messageOverrides
+  } = overrides;
+  const media =
+    mediaPath || mediaType || mediaUrl || payload?.media
+      ? {
+          path: mediaPath,
+          type: mediaType,
+          url: mediaUrl,
+          ...payload?.media,
+        }
+      : undefined;
+  return createTestWebInboundMessage({
+    event: {
+      id: id ?? "msg1",
+      timestamp,
+      ...event,
+    },
+    payload: {
+      body: body ?? "hi",
+      media,
+      untrustedStructuredContext,
+      ...payload,
+    },
+    platform: {
+      chatJid: chatId ?? "+1000",
+      recipientJid: to ?? "+2000",
+      senderJid,
+      senderE164,
+      senderName,
+      ...(sendComposing ? { sendComposing } : {}),
+      ...(reply ? { reply } : {}),
+      ...(sendMedia ? { sendMedia } : {}),
+      ...platform,
+    },
     from: "+1000",
-    to: "+2000",
     conversationId: "+1000",
     accountId: "default",
-    chatId: "+1000",
     chatType: "direct",
-    body: "hi",
-    sendComposing: async () => {},
-    reply: async () => acceptedSendResult("text", "r1"),
-    sendMedia: async () => acceptedSendResult("media", "m1"),
-    ...overrides,
-  };
+    group:
+      groupSubject || groupParticipants || group
+        ? {
+            subject: groupSubject,
+            participants: groupParticipants,
+            ...group,
+          }
+        : undefined,
+    ...messageOverrides,
+  });
 }
 
 function getCapturedDeliver() {
