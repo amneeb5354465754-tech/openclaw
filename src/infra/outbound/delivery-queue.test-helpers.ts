@@ -71,7 +71,6 @@ export function setQueuedEntryState(
   fs.writeFileSync(filePath, JSON.stringify(entry), "utf-8");
 }
 
-/** Create a mocked recovery logger compatible with queue recovery tests. */
 export function createRecoveryLog(): RecoveryLogger & {
   info: ReturnType<typeof vi.fn<(msg: string) => void>>;
   warn: ReturnType<typeof vi.fn<(msg: string) => void>>;

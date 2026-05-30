@@ -38,7 +38,6 @@ function resolveOutboundThreadId(
   return resolved ?? undefined;
 }
 
-/** Creates Vitest mocks that emulate outbound threading side effects. */
 export function createOutboundThreadingMock() {
   const resolveOutboundReplyToId = vi.fn(
     (

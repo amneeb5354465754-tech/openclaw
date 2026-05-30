@@ -31,7 +31,6 @@ export const directChatConfig = {
 /** Direct outbound adapter shared by message-action test plugins. */
 export const directOutbound: ChannelOutboundAdapter = { deliveryMode: "direct" };
 
-/** Run a message action in dry-run mode for tests. */
 export const runDryAction = (params: {
   cfg: OpenClawConfig;
   action: ChannelMessageActionName;
@@ -52,7 +51,6 @@ export const runDryAction = (params: {
     agentId: params.agentId,
   });
 
-/** Run a send action in dry-run mode for tests. */
 export const runDrySend = (params: {
   cfg: OpenClawConfig;
   actionParams: Record<string, unknown>;
