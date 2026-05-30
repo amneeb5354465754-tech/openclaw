@@ -7,7 +7,6 @@ import { setActivePluginRegistry } from "../../plugins/runtime.js";
 
 const EMPTY_PLUGIN_SCHEMA = { type: "object", additionalProperties: false, properties: {} };
 
-/** Creates a temporary plugin directory. */
 export function createTempPluginDir(
   tempDirs: string[],
   prefix: string,

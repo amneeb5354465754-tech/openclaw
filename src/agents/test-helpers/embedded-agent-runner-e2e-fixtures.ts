@@ -12,7 +12,6 @@ export type EmbeddedAgentRunnerTestWorkspace = {
   workspaceDir: string;
 };
 
-/** Creates a temporary workspace for embedded-runner E2E tests. */
 export async function createEmbeddedAgentRunnerTestWorkspace(
   prefix: string,
 ): Promise<EmbeddedAgentRunnerTestWorkspace> {
@@ -24,7 +23,6 @@ export async function createEmbeddedAgentRunnerTestWorkspace(
   return { tempRoot, agentDir, workspaceDir };
 }
 
-/** Removes an embedded-runner E2E test workspace. */
 export async function cleanupEmbeddedAgentRunnerTestWorkspace(
   workspace: EmbeddedAgentRunnerTestWorkspace | undefined,
 ): Promise<void> {
@@ -34,7 +32,6 @@ export async function cleanupEmbeddedAgentRunnerTestWorkspace(
   await fs.rm(workspace.tempRoot, { recursive: true, force: true });
 }
 
-/** Builds OpenAI model config for embedded-runner E2E tests. */
 export function createEmbeddedAgentRunnerOpenAiConfig(modelIds: string[]): OpenClawConfig {
   return {
     models: {
@@ -58,7 +55,6 @@ export function createEmbeddedAgentRunnerOpenAiConfig(modelIds: string[]): OpenC
   };
 }
 
-/** Runs queued work immediately in tests. */
 export async function immediateEnqueue<T>(task: () => Promise<T>): Promise<T> {
   return await task();
 }
@@ -142,7 +138,6 @@ export function makeEmbeddedRunnerAttempt(
   };
 }
 
-/** Builds a resolved model fixture for embedded-runner tests. */
 export function createResolvedEmbeddedRunnerModel(
   provider: string,
   modelId: string,
