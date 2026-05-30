@@ -23,7 +23,6 @@ type StatusScanSharedMocks = {
   buildPluginCompatibilityNotices: Mock<() => unknown[]>;
 };
 
-/** Creates the shared vi mocks used by status scan module-loader tests. */
 export function createStatusScanSharedMocks(configPathLabel: string): StatusScanSharedMocks {
   return {
     resolveConfigPath: vi.fn(() => `/tmp/openclaw-${configPathLabel}-missing-${process.pid}.json`),

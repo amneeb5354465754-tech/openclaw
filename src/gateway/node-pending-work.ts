@@ -220,7 +220,6 @@ export function resetNodePendingWorkForTests() {
   stateByNodeId.clear();
 }
 
-/** Returns the number of nodes with pending-work state for tests. */
 export function getNodePendingWorkStateCountForTests(): number {
   return stateByNodeId.size;
 }

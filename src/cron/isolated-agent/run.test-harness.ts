@@ -680,7 +680,6 @@ function resetRunSessionMocks(): void {
   retireSessionMcpRuntimeMock.mockResolvedValue(true);
 }
 
-/** Reset all isolated-agent cron harness mocks to their default behaviors. */
 export function resetRunCronIsolatedAgentTurnHarness(): void {
   vi.clearAllMocks();
   resetRunConfigMocks();

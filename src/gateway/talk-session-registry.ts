@@ -51,7 +51,6 @@ export function requireUnifiedTalkSessionConn(
   return connId;
 }
 
-/** Reset the process-local Talk registry for isolated tests. */
 export function clearUnifiedTalkSessionsForTest(): void {
   unifiedTalkSessions.clear();
 }

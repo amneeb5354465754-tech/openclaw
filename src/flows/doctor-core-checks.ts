@@ -887,7 +887,6 @@ export function registerCoreHealthChecks(): void {
   registered = true;
 }
 
-/** Reset core health-check registration state between tests. */
 export function resetCoreHealthChecksForTest(): void {
   registered = false;
 }

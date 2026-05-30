@@ -1261,7 +1261,6 @@ export function isInternalDiagnosticEventMetadata(metadata: DiagnosticEventMetad
   return metadata.internal === true;
 }
 
-/** Reset process-local diagnostic event state for tests. */
 export function resetDiagnosticEventsForTest(): void {
   const state = getDiagnosticEventsState();
   state.enabled = true;

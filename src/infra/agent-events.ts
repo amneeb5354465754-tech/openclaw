@@ -330,7 +330,6 @@ export function onAgentEvent(listener: (evt: AgentEventPayload) => void) {
   return registerListener(state.listeners, listener);
 }
 
-/** Reset event sequence, listener, and context state for tests. */
 export function resetAgentEventsForTest() {
   const state = getAgentEventState();
   state.seqByRun.clear();
