@@ -3,7 +3,6 @@ import os from "node:os";
 import path from "node:path";
 import type { CommandResolution, ExecutableResolution } from "./exec-command-resolution.js";
 
-/** Build a minimal PATH/PATHEXT environment for executable resolution tests. */
 export function makePathEnv(binDir: string): NodeJS.ProcessEnv {
   if (process.platform !== "win32") {
     return { PATH: binDir };
@@ -11,12 +10,10 @@ export function makePathEnv(binDir: string): NodeJS.ProcessEnv {
   return { PATH: binDir, PATHEXT: ".EXE;.CMD;.BAT;.COM" };
 }
 
-/** Create a realpath-normalized temp directory for exec approval fixtures. */
 export function makeTempDir(): string {
   return fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-exec-approvals-")));
 }
 
-/** Build an executable-resolution object for command-resolution tests. */
 export function makeMockExecutableResolution(params: {
   rawExecutable: string;
   executableName: string;
@@ -31,7 +28,6 @@ export function makeMockExecutableResolution(params: {
   };
 }
 
-/** Build a command-resolution object with legacy getter aliases used by older tests. */
 export function makeMockCommandResolution(params: {
   execution: ExecutableResolution;
   policy?: ExecutableResolution;
@@ -89,7 +85,6 @@ type WrapperResolutionParityFixture = {
   cases: WrapperResolutionParityFixtureCase[];
 };
 
-/** Load shell parser parity fixture cases from the repo test fixtures. */
 export function loadShellParserParityFixtureCases(): ShellParserParityFixtureCase[] {
   const fixturePath = path.join(
     process.cwd(),
@@ -101,7 +96,6 @@ export function loadShellParserParityFixtureCases(): ShellParserParityFixtureCas
   return fixture.cases;
 }
 
-/** Load wrapper resolution parity fixture cases from the repo test fixtures. */
 export function loadWrapperResolutionParityFixtureCases(): WrapperResolutionParityFixtureCase[] {
   const fixturePath = path.join(
     process.cwd(),
