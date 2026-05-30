@@ -25,7 +25,6 @@ export function asConfig(value: unknown): OpenClawConfig {
   return value as OpenClawConfig;
 }
 
-/** Build a minimal auth profile store with supplied profiles for tests. */
 export function loadAuthStoreWithProfiles(
   profiles: AuthProfileStore["profiles"],
 ): AuthProfileStore {
@@ -97,7 +96,6 @@ function createTestProvider(params: {
   };
 }
 
-/** Build deterministic web-search provider fixtures for secrets runtime tests. */
 export function buildTestWebSearchProviders(): PluginWebSearchProviderEntry[] {
   return [
     createTestProvider({ id: "brave", pluginId: "brave", order: 10 }),
@@ -108,13 +106,11 @@ export function buildTestWebSearchProviders(): PluginWebSearchProviderEntry[] {
   ];
 }
 
-/** Reset the mocked plugin web-search provider resolver to default fixtures. */
 export function resetPluginWebSearchProvidersMock() {
   resolvePluginWebSearchProvidersMock.mockReset();
   resolvePluginWebSearchProvidersMock.mockReturnValue(buildTestWebSearchProviders());
 }
 
-/** Return the mocked plugin web-search provider resolver for assertions. */
 export function getResolvePluginWebSearchProvidersMock() {
   return resolvePluginWebSearchProvidersMock;
 }

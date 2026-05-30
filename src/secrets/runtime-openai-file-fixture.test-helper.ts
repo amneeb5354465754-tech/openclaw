@@ -34,7 +34,6 @@ export function asConfig(value: unknown): OpenClawConfig {
   return value as OpenClawConfig;
 }
 
-/** Builds a minimal auth-profile store around fixture profiles. */
 export function loadAuthStoreWithProfiles(
   profiles: AuthProfileStore["profiles"],
 ): AuthProfileStore {
@@ -84,7 +83,6 @@ export async function createOpenAIFileRuntimeFixture(home: string) {
   };
 }
 
-/** Builds config that points OpenAI provider auth at the fixture secret file. */
 export function createOpenAIFileRuntimeConfig(secretFile: string): OpenClawConfig {
   return asConfig({
     secrets: {
