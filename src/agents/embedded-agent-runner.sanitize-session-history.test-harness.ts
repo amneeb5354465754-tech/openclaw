@@ -44,7 +44,6 @@ export function makeModelSnapshotEntry(data: {
   };
 }
 
-/** Creates a session manager mock backed by a mutable entry array. */
 export function makeInMemorySessionManager(entries: SessionEntry[]): SessionManager {
   return {
     getEntries: vi.fn(() => entries),
@@ -54,7 +53,6 @@ export function makeInMemorySessionManager(entries: SessionEntry[]): SessionMana
   } as unknown as SessionManager;
 }
 
-/** Creates an empty session manager mock for tests that only need calls. */
 export function makeMockSessionManager(): SessionManager {
   return {
     getEntries: vi.fn().mockReturnValue([]),
@@ -62,13 +60,11 @@ export function makeMockSessionManager(): SessionManager {
   } as unknown as SessionManager;
 }
 
-/** Returns a minimal user-message history for sanitizer tests. */
 export function makeSimpleUserMessages(): AgentMessage[] {
   const messages = [{ role: "user", content: "hello" }];
   return messages as unknown as AgentMessage[];
 }
 
-/** Creates the embedded-agent helper module mock used by sanitizer tests. */
 export async function createSanitizeSessionHistoryHelpersMock(extra: Record<string, unknown> = {}) {
   return {
     ...(await vi.importActual("./embedded-agent-helpers.js")),
@@ -77,7 +73,6 @@ export async function createSanitizeSessionHistoryHelpersMock(extra: Record<stri
   };
 }
 
-/** Creates a provider runtime mock with sanitizer plugin hooks disabled. */
 export async function createSanitizeSessionHistoryProviderRuntimeMock(
   extra: Record<string, unknown> = {},
 ) {
@@ -93,7 +88,6 @@ export async function createSanitizeSessionHistoryProviderRuntimeMock(
   };
 }
 
-/** Creates a provider hook runtime mock with cache-reset test hooks exposed. */
 export async function createSanitizeSessionHistoryProviderHookRuntimeMock(
   extra: Record<string, unknown> = {},
 ) {
