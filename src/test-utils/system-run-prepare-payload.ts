@@ -8,7 +8,6 @@ type SystemRunPrepareInput = {
   sessionKey?: unknown;
 };
 
-/** Build the `system.run.prepare` payload shape from loose test inputs. */
 export function buildSystemRunPreparePayload(params: SystemRunPrepareInput) {
   const argv = Array.isArray(params.command) ? params.command.map(String) : [];
   const previewCommand =

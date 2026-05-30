@@ -155,12 +155,10 @@ function resolveSetupWizardNotePrompter(prompter?: Pick<WizardPrompter, "note">)
   );
 }
 
-/** Build a channel setup wizard adapter from declarative wizard metadata. */
 export function createSetupWizardAdapter(params: SetupWizardAdapterParams) {
   return buildChannelSetupWizardAdapterFromSetupWizard(params);
 }
 
-/** Build a setup wizard adapter from a test plugin that exposes declarative setupWizard. */
 export function createPluginSetupWizardAdapter(plugin: SetupWizardTestPlugin) {
   const wizard = requireDeclarativeSetupWizard(plugin);
   return createSetupWizardAdapter({
@@ -169,12 +167,10 @@ export function createPluginSetupWizardAdapter(plugin: SetupWizardTestPlugin) {
   });
 }
 
-/** Return the configure function for a test plugin's setup wizard adapter. */
 export function createPluginSetupWizardConfigure(plugin: SetupWizardTestPlugin) {
   return createPluginSetupWizardAdapter(plugin).configure;
 }
 
-/** Return the getStatus function for a test plugin's setup wizard adapter. */
 export function createPluginSetupWizardStatus(plugin: SetupWizardTestPlugin) {
   return createPluginSetupWizardAdapter(plugin).getStatus;
 }
