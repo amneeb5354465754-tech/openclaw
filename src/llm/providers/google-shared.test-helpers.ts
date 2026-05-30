@@ -39,7 +39,6 @@ export const getFirstToolParameters = (converted: ConvertedTools): Record<string
   return asRecord(functionDeclaration.parametersJsonSchema ?? functionDeclaration.parameters);
 };
 
-/** Build a minimal Google Generative AI model fixture. */
 export const makeModel = (id: string): Model<"google-generative-ai"> =>
   ({
     id,
@@ -54,7 +53,6 @@ export const makeModel = (id: string): Model<"google-generative-ai"> =>
     maxTokens: 1,
   }) as Model<"google-generative-ai">;
 
-/** Build a minimal Gemini CLI model fixture. */
 export const makeGeminiCliModel = (id: string): Model<"google-gemini-cli"> =>
   ({
     id,
@@ -69,7 +67,6 @@ export const makeGeminiCliModel = (id: string): Model<"google-gemini-cli"> =>
     maxTokens: 1,
   }) as Model<"google-gemini-cli">;
 
-/** Build a Google Generative AI assistant message fixture. */
 export function makeGoogleAssistantMessage(model: string, content: unknown) {
   return {
     role: "assistant",
@@ -83,7 +80,6 @@ export function makeGoogleAssistantMessage(model: string, content: unknown) {
   };
 }
 
-/** Build a Gemini CLI assistant message fixture. */
 export function makeGeminiCliAssistantMessage(model: string, content: unknown) {
   return {
     role: "assistant",

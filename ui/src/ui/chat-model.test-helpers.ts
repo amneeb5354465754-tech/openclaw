@@ -37,7 +37,6 @@ export function createModelCatalog(...entries: ModelCatalogEntry[]): ModelCatalo
   return [...entries];
 }
 
-/** Build duplicate model ids across providers for ambiguity tests. */
 export function createAmbiguousModelCatalog(
   id: string,
   ...providers: string[]
@@ -61,7 +60,6 @@ export function createMainSessionRow(
   };
 }
 
-/** Build a minimal sessions-list response for model/default resolution tests. */
 export function createSessionsListResult(
   params: {
     model?: string | null;

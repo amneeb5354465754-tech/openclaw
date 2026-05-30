@@ -1,6 +1,5 @@
 import { normalizeImportedCustomTheme } from "../ui/custom-theme.ts";
 
-/** Create a representative tweakcn theme payload for import tests. */
 export function createTweakcnThemePayload() {
   return {
     name: "Light Green",
@@ -55,7 +54,6 @@ export function createTweakcnThemePayload() {
   };
 }
 
-/** Create a normalized imported custom-theme fixture. */
 export function createImportedCustomThemeFixture() {
   return normalizeImportedCustomTheme(createTweakcnThemePayload(), {
     sourceUrl: "https://tweakcn.com/themes/cmlhfpjhw000004l4f4ax3m7z",
