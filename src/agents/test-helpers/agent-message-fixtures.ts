@@ -11,7 +11,6 @@ export function castAgentMessages(messages: unknown[]): AgentMessage[] {
   return messages as AgentMessage[];
 }
 
-/** Builds a minimal user message fixture. */
 export function makeAgentUserMessage(
   overrides: Partial<UserMessage> & Pick<UserMessage, "content">,
 ): UserMessage {
@@ -22,7 +21,6 @@ export function makeAgentUserMessage(
   };
 }
 
-/** Builds a minimal assistant message fixture. */
 export function makeAgentAssistantMessage(
   overrides: Partial<AssistantMessage> & Pick<AssistantMessage, "content">,
 ): AssistantMessage {

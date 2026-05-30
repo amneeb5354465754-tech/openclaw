@@ -63,7 +63,6 @@ export async function immediateEnqueue<T>(task: () => Promise<T>): Promise<T> {
   return await task();
 }
 
-/** Creates a normalized usage fixture. */
 export function createMockUsage(input: number, output: number) {
   return {
     input,
@@ -83,7 +82,6 @@ export function createMockUsage(input: number, output: number) {
 
 const baseUsage = createMockUsage(0, 0);
 
-/** Builds an assistant message fixture with replay metadata. */
 export function buildEmbeddedRunnerAssistant(
   overrides: Partial<AssistantMessage>,
 ): AssistantMessage {
@@ -100,7 +98,6 @@ export function buildEmbeddedRunnerAssistant(
   };
 }
 
-/** Builds an embedded-runner attempt result fixture. */
 export function makeEmbeddedRunnerAttempt(
   overrides: Partial<EmbeddedRunAttemptResult>,
 ): EmbeddedRunAttemptResult {

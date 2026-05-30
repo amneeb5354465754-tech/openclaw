@@ -14,7 +14,6 @@ type AgentToolsSandboxContextParams = {
   dockerOverrides?: Partial<SandboxContext["docker"]>;
 };
 
-/** Creates a sandbox context tailored for agent tool tests. */
 export function createAgentToolsSandboxContext(
   params: AgentToolsSandboxContextParams,
 ): SandboxContext {

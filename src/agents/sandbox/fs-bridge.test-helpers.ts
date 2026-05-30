@@ -62,7 +62,6 @@ async function loadFreshFsBridgeModuleForTest() {
   ({ createSandboxFsBridge: createSandboxFsBridgeImpl } = await import("./fs-bridge.js"));
 }
 
-/** Creates a bridge bound to mocked Docker execution for tests. */
 export function createSandboxFsBridge(
   ...args: Parameters<typeof import("./fs-bridge.js").createSandboxFsBridge>
 ) {
@@ -89,7 +88,6 @@ export function getDockerArg(args: string[], position: number): string {
   return args[DOCKER_FIRST_SCRIPT_ARG_INDEX + position - 1] ?? "";
 }
 
-/** Returns all shell scripts passed to mocked Docker calls. */
 export function getScriptsFromCalls(): string[] {
   return mockedExecDockerRaw.mock.calls.map(([args]) => getDockerScript(args));
 }
@@ -111,7 +109,6 @@ export function findCallsByScriptFragment(fragment: string) {
   );
 }
 
-/** Builds a successful raw Docker result with stdout bytes for mock returns. */
 export function dockerExecResult(stdout: string) {
   return {
     stdout: Buffer.from(stdout),
@@ -120,7 +117,6 @@ export function dockerExecResult(stdout: string) {
   };
 }
 
-/** Creates a default sandbox context for bridge tests. */
 export function createSandbox(overrides?: Partial<SandboxContext>): SandboxContext {
   return createSandboxTestContext({
     overrides: {
@@ -134,7 +130,6 @@ export function createSandbox(overrides?: Partial<SandboxContext>): SandboxConte
   });
 }
 
-/** Creates a temp workspace and seeded filesystem bridge for tests. */
 export async function createSeededSandboxFsBridge(
   stateDir: string,
   params?: {
