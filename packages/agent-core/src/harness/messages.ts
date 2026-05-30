@@ -103,7 +103,6 @@ export function createCompactionSummaryMessage(
   };
 }
 
-/** Build a custom transcript entry for harness extensions. */
 export function createCustomMessage(
   customType: string,
   content: string | (TextContent | ImageContent)[],

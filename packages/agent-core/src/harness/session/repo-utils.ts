@@ -9,7 +9,6 @@ import {
 import { Session } from "./session.js";
 import { uuidv7 } from "./uuid.js";
 
-/** Create a new session id using the harness UUIDv7 generator. */
 export function createSessionId(): string {
   return uuidv7();
 }

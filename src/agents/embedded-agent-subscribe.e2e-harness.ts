@@ -17,7 +17,6 @@ export const THINKING_TAG_CASES = [
   { tag: "antml:thinking", open: "<antml:thinking>", close: "</antml:thinking>" },
 ] as const;
 
-/** Create a bare session/event harness for subscription tests. */
 export function createStubSessionHarness(): {
   session: EmbeddedAgentSession;
   emit: (evt: unknown) => void;
@@ -33,7 +32,6 @@ export function createStubSessionHarness(): {
   return { session, emit: (evt: unknown) => handler?.(evt) };
 }
 
-/** Create a stub session with subscribeEmbeddedAgentSession attached. */
 export function createSubscribedSessionHarness(
   params: Omit<Parameters<SubscribeEmbeddedAgentSession>[0], "session"> & {
     sessionExtras?: Partial<EmbeddedAgentSession>;
@@ -55,7 +53,6 @@ export function createSubscribedSessionHarness(
   return { emit, session: mergedSession, subscription };
 }
 
-/** Create a subscription harness configured for paragraph chunking. */
 export function createParagraphChunkedBlockReplyHarness(params: {
   chunking: { minChars: number; maxChars: number };
   onBlockReply?: OnBlockReply;
@@ -78,7 +75,6 @@ export function createParagraphChunkedBlockReplyHarness(params: {
   return { emit, onBlockReply, subscription };
 }
 
-/** Create a subscription harness that flushes block replies on text-end. */
 export function createTextEndBlockReplyHarness(params?: {
   onBlockReply?: OnBlockReply;
   runId?: string;
