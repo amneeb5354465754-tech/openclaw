@@ -13,7 +13,6 @@ export const HOOK_ONLY_MESSAGE =
 export const DEPRECATED_MEMORY_EMBEDDING_PROVIDER_API_MESSAGE =
   "uses deprecated memory-specific embedding provider API; use api.registerEmbeddingProvider and contracts.embeddingProviders for new embedding providers.";
 
-/** Creates a plugin compatibility notice fixture by code. */
 export function createCompatibilityNotice(
   params: Pick<PluginCompatibilityNotice, "pluginId" | "code">,
 ): PluginCompatibilityNotice {
@@ -48,7 +47,6 @@ export function createCompatibilityNotice(
   throw new Error("unsupported compatibility notice code");
 }
 
-/** Creates a complete plugin registry record fixture with safe defaults. */
 export function createPluginRecord(
   overrides: Partial<PluginRecord> & Pick<PluginRecord, "id">,
 ): PluginRecord {
@@ -97,7 +95,6 @@ export function createPluginRecord(
   };
 }
 
-/** Creates a typed hook load-result fixture. */
 export function createTypedHook(params: {
   pluginId: string;
   hookName: PluginHookName;
@@ -111,7 +108,6 @@ export function createTypedHook(params: {
   };
 }
 
-/** Creates a legacy custom hook load-result fixture. */
 export function createCustomHook(params: {
   pluginId: string;
   events: string[];
@@ -137,7 +133,6 @@ export function createCustomHook(params: {
   };
 }
 
-/** Creates a full plugin load result fixture with empty capability arrays. */
 export function createPluginLoadResult(
   overrides: Partial<PluginLoadResult> & Pick<PluginLoadResult, "plugins"> = { plugins: [] },
 ): PluginLoadResult {
