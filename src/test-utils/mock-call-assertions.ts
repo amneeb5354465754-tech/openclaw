@@ -1,6 +1,5 @@
 import { expect } from "vitest";
 
-/** Returns a mock call by index or throws an explicit missing-call error. */
 export function mockCall(mock: unknown, index = 0): Array<unknown> {
   const calls = (mock as { mock?: { calls?: Array<Array<unknown>> } }).mock?.calls ?? [];
   const call = calls.at(index);
@@ -10,7 +9,6 @@ export function mockCall(mock: unknown, index = 0): Array<unknown> {
   return call;
 }
 
-/** Returns the first mock argument when it is an object record. */
 export function mockFirstObjectArg(mock: unknown): Record<string, unknown> {
   const [arg] = mockCall(mock);
   if (!arg || typeof arg !== "object") {

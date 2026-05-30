@@ -1,7 +1,6 @@
 import type { ServerResponse } from "node:http";
 import { lowercasePreservingWhitespace } from "../shared/string-coerce.js";
 
-/** Create a lightweight ServerResponse mock that records headers, status, and body. */
 export function createMockServerResponse(): ServerResponse & { body?: string } {
   const headers: Record<string, string> = {};
   const res: {

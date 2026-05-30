@@ -5,7 +5,6 @@ type RuntimeEnvOptions = {
   throwOnExit?: boolean;
 };
 
-/** Creates a mocked output runtime whose exit throws by default for assertions. */
 export function createRuntimeEnv(options?: RuntimeEnvOptions): OutputRuntimeEnv {
   const throwOnExit = options?.throwOnExit ?? true;
   return {
@@ -21,7 +20,6 @@ export function createRuntimeEnv(options?: RuntimeEnvOptions): OutputRuntimeEnv 
   };
 }
 
-/** Creates a mocked runtime and casts it to the narrower runtime shape under test. */
 export function createTypedRuntimeEnv<TRuntime extends RuntimeEnv = OutputRuntimeEnv>(
   options?: RuntimeEnvOptions,
   _runtimeShape?: (runtime: TRuntime) => void,
@@ -29,12 +27,10 @@ export function createTypedRuntimeEnv<TRuntime extends RuntimeEnv = OutputRuntim
   return createRuntimeEnv(options) as unknown as TRuntime;
 }
 
-/** Creates a mocked output runtime whose exit call is recorded but does not throw. */
 export function createNonExitingRuntimeEnv(): OutputRuntimeEnv {
   return createRuntimeEnv({ throwOnExit: false });
 }
 
-/** Creates a non-throwing mocked runtime with a caller-specified runtime type. */
 export function createNonExitingTypedRuntimeEnv<TRuntime extends RuntimeEnv = OutputRuntimeEnv>(
   runtimeShape?: (runtime: TRuntime) => void,
 ): TRuntime {
