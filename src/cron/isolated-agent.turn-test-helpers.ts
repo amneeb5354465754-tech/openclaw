@@ -14,7 +14,6 @@ import type { CronJob } from "./types.js";
 
 export { withTempHome };
 
-/** Creates mocked CLI delivery dependencies for cron turn tests. */
 export function makeDeps(): CliDeps {
   return {
     sendMessageSlack: vi.fn(),

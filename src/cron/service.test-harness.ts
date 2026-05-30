@@ -16,7 +16,6 @@ type NoopLogger = {
   error: MockFn;
 };
 
-/** Creates a Vitest mock logger accepted by cron service dependencies. */
 export function createNoopLogger(): NoopLogger {
   return {
     debug: vi.fn(),
@@ -26,7 +25,6 @@ export function createNoopLogger(): NoopLogger {
   };
 }
 
-/** Creates per-test cron store paths under one temp fixture root. */
 export function createCronStoreHarness(options?: { prefix?: string }) {
   let fixtureRoot = "";
   let caseId = 0;
@@ -118,7 +116,6 @@ export function createFinishedBarrier() {
   };
 }
 
-/** Creates a CronService wired to a finished-event barrier and mock side effects. */
 export function createStartedCronServiceWithFinishedBarrier(params: {
   storePath: string;
   logger: ReturnType<typeof createNoopLogger>;
@@ -223,7 +220,6 @@ export async function withCronServiceStateForTest<T>(
   }
 }
 
-/** Creates an externally resolved promise for async cron coordination tests. */
 export function createDeferred<T>() {
   let resolve!: (value: T) => void;
   let reject!: (reason?: unknown) => void;
@@ -234,7 +230,6 @@ export function createDeferred<T>() {
   return { promise, resolve, reject };
 }
 
-/** Creates a minimal CronServiceState fixture around a supplied job list. */
 export function createMockCronStateForJobs(params: {
   jobs: CronJob[];
   nowMs?: number;

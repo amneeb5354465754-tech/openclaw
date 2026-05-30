@@ -29,7 +29,6 @@ export const AUTH_TOKEN: ResolvedGatewayAuth = {
   allowTailscale: false,
 };
 
-/** Creates a minimal IncomingMessage fixture for gateway HTTP handlers. */
 export function createRequest(params: {
   path: string;
   authorization?: string;
@@ -48,7 +47,6 @@ export function createRequest(params: {
   });
 }
 
-/** Creates a POST hook request fixture with the default hook token. */
 export function createHookRequest(params?: {
   authorization?: string;
   remoteAddress?: string;
@@ -65,7 +63,6 @@ export function createHookRequest(params?: {
   });
 }
 
-/** Creates a ServerResponse fixture that captures headers, status, and body. */
 export function createResponse(): {
   res: ServerResponse;
   setHeader: ReturnType<typeof vi.fn>;
@@ -143,7 +140,6 @@ export async function withGatewayTempConfig(
   });
 }
 
-/** Creates a gateway HTTP server with default test-disabled optional surfaces. */
 export function createTestGatewayServer(options: {
   resolvedAuth: ResolvedGatewayAuth;
   overrides?: GatewayServerOptions;
@@ -176,7 +172,6 @@ export async function withGatewayServer(params: {
   });
 }
 
-/** Sends a fixture request through a gateway HTTP server and returns the capture. */
 export async function sendRequest(
   server: GatewayHttpServer,
   params: {
@@ -216,7 +211,6 @@ export function createCanonicalizedChannelPluginHandler() {
   });
 }
 
-/** Creates a hooks request handler with test logging and dispatch defaults. */
 export function createHooksHandler(
   params:
     | string

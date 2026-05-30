@@ -375,7 +375,6 @@ vi.mock("./session.js", () => ({
   resolveCronSession: resolveCronSessionMock,
 }));
 
-/** Build a default cron session entry for isolated-agent tests. */
 export function makeCronSessionEntry(overrides?: Record<string, unknown>): CronSessionEntry {
   return {
     sessionId: "test-session-id",
@@ -386,7 +385,6 @@ export function makeCronSessionEntry(overrides?: Record<string, unknown>): CronS
   };
 }
 
-/** Build a default cron session wrapper for isolated-agent tests. */
 export function makeCronSession(overrides?: Record<string, unknown>): CronSession {
   return {
     storePath: "/tmp/store.json",
