@@ -69,12 +69,10 @@ export class FakeProvider implements VoiceCallProvider {
   }
 }
 
-/** Create a temporary voice-call store directory for manager tests. */
 export function createTestStorePath(): string {
   return fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-voice-call-test-"));
 }
 
-/** Create an initialized CallManager with a fake provider. */
 export async function createManagerHarness(
   configOverrides: Record<string, unknown> = {},
   provider = new FakeProvider(),
@@ -111,7 +109,6 @@ export function writeCallsToStore(storePath: string, calls: Record<string, unkno
   fs.writeFileSync(logPath, lines);
 }
 
-/** Build a persisted call record fixture with optional overrides. */
 export function makePersistedCall(
   overrides: Record<string, unknown> = {},
 ): Record<string, unknown> {
