@@ -51,7 +51,6 @@ function resolveQueueSettings(params: {
   };
 }
 
-/** Creates a delivery-runtime mock with controllable session entries and gateway outcomes. */
 export function createSubagentAnnounceDeliveryRuntimeMock(options: DeliveryRuntimeMockOptions) {
   return {
     callGateway: (async <T = Record<string, unknown>>(request: Parameters<typeof callGateway>[0]) =>

@@ -47,7 +47,6 @@ export async function writeSubagentSessionEntry(params: {
   return storePath;
 }
 
-/** Removes one child session entry from a test session store. */
 export async function removeSubagentSessionEntry(params: {
   stateDir: string;
   sessionKey: string;
@@ -61,7 +60,6 @@ export async function removeSubagentSessionEntry(params: {
   return storePath;
 }
 
-/** Builds default mocked dependencies for subagent registry tests. */
 export function createSubagentRegistryTestDeps(
   extra: Record<string, unknown> = {},
 ): Record<string, unknown> {
