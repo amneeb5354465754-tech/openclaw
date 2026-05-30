@@ -2,7 +2,6 @@ import type { vi } from "vitest";
 
 type ViLike = Pick<typeof vi, "fn">;
 
-/** Create a test runtime that records logs/errors and models exits as thrown errors. */
 export function createCliRuntimeMock(
   viInstance: ViLike,
   options: {

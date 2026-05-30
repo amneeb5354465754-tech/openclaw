@@ -33,7 +33,6 @@ function stringifyRuntimeJson(value: unknown, space = 2): string {
   return JSON.stringify(value, null, space > 0 ? space : undefined);
 }
 
-/** Create a mock output runtime and mutable buffers for CLI assertions. */
 export function createCliRuntimeCapture(): CliRuntimeCapture {
   const runtimeLogs: string[] = [];
   const runtimeErrors: string[] = [];
@@ -97,7 +96,6 @@ export function spyRuntimeJson(runtime: Pick<OutputRuntimeEnv, "writeJson">) {
 }
 
 // oxlint-disable-next-line typescript/no-unnecessary-type-parameters -- Test helper lets callers ascribe captured JSON shape.
-/** Return the first value passed to a mocked `writeJson` call. */
 export function firstWrittenJsonArg<T>(writeJson: MockCallsWithFirstArg): T | null {
   return (writeJson.mock.calls.at(0)?.[0] ?? null) as T | null;
 }

@@ -279,7 +279,6 @@ export async function loadStatusScanModuleForTest(
   return await import("./status.scan.js");
 }
 
-/** Creates a minimal OpenClaw config fixture for status scan tests. */
 export function createStatusScanConfig<T extends object = OpenClawConfig>(
   overrides: T = {} as T,
 ): OpenClawConfig & T {
@@ -290,7 +289,6 @@ export function createStatusScanConfig<T extends object = OpenClawConfig>(
   } as OpenClawConfig & T;
 }
 
-/** Creates a minimal status summary fixture with optional channel/agent overrides. */
 export function createStatusSummary(
   options: {
     linkChannel?: { linked: boolean };
@@ -368,7 +366,6 @@ function createStatusGatewayProbeFailure() {
   };
 }
 
-/** Creates a config fixture with local memory-search enabled. */
 export function createStatusMemorySearchConfig(): OpenClawConfig {
   return createStatusScanConfig({
     agents: {
@@ -383,7 +380,6 @@ export function createStatusMemorySearchConfig(): OpenClawConfig {
   });
 }
 
-/** Creates the memory manager mock returned by status scan dependency loaders. */
 export function createStatusMemorySearchManager() {
   return {
     manager: {
