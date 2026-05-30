@@ -20,13 +20,11 @@ vi.mock("../plugins/provider-runtime.js", async () => {
   };
 });
 
-/** Resets the provider usage plugin resolver mock to return no plugin snapshot. */
 export function resetProviderUsageSnapshotWithPluginMock() {
   resolveProviderUsageSnapshotWithPluginMock.mockReset();
   resolveProviderUsageSnapshotWithPluginMock.mockResolvedValue(null);
 }
 
-/** Returns the hoisted provider usage plugin resolver mock. */
 export function getProviderUsageSnapshotWithPluginMock() {
   return resolveProviderUsageSnapshotWithPluginMock;
 }

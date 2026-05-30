@@ -1,6 +1,5 @@
 import { vi } from "vitest";
 
-/** Creates auth mocks that make every provider appear configured for tests. */
 export function createAvailableModelAuthMockModule() {
   return {
     hasAvailableAuthForProvider: vi.fn(() => true),
@@ -13,7 +12,6 @@ export function createAvailableModelAuthMockModule() {
   };
 }
 
-/** Creates plugin capability-provider mocks with no discovered providers. */
 export function createEmptyCapabilityProviderMockModule() {
   return {
     resolvePluginCapabilityProviders: () => [],
