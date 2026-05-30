@@ -148,7 +148,6 @@ export const forumMessagingForTest: ChannelMessagingAdapter = {
   preserveHeartbeatThreadIdForGroupRoute: true,
 };
 
-/** Create a lightweight channel plugin fixture for target tests. */
 export function createTestChannelPlugin(params: {
   id: ChannelPlugin["id"];
   label?: string;
@@ -180,7 +179,6 @@ export function createTestChannelPlugin(params: {
   };
 }
 
-/** Create a direct-delivery test plugin with generic target normalization. */
 export function createGenericTargetTestPlugin(
   id: ChannelPlugin["id"],
   label = String(id),
@@ -200,7 +198,6 @@ export function createGenericTargetTestPlugin(
   });
 }
 
-/** Create the forum target test plugin fixture. */
 export function createForumTargetTestPlugin(): ChannelPlugin {
   return createTestChannelPlugin({
     id: "forum",
@@ -215,7 +212,6 @@ export function createForumTargetTestPlugin(): ChannelPlugin {
   });
 }
 
-/** Create a test registry populated with outbound target plugin fixtures. */
 export function createTargetsTestRegistry(
   plugins: ChannelPlugin[] = [
     createGenericTargetTestPlugin("alpha", "Alpha"),
