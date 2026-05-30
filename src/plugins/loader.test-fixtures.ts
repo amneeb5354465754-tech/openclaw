@@ -6,11 +6,8 @@ import { withEnv } from "../test-utils/env.js";
 import { clearPluginLoaderCache, loadOpenClawPlugins } from "./loader.js";
 import { resetPluginRuntimeStateForTest } from "./runtime.js";
 
-/** Paths and id for a generated temporary plugin fixture. */
 export type TempPlugin = { dir: string; file: string; id: string };
-/** Config shape accepted by `loadOpenClawPlugins` in tests. */
 export type PluginLoadConfig = NonNullable<Parameters<typeof loadOpenClawPlugins>[0]>["config"];
-/** Registry shape returned by `loadOpenClawPlugins` in tests. */
 export type PluginRegistry = ReturnType<typeof loadOpenClawPlugins>;
 
 function chmodSafeDir(dir: string) {
@@ -44,7 +41,6 @@ export const EMPTY_PLUGIN_SCHEMA = {
   properties: {},
 };
 
-/** Returns inline CJS source for channel plugin entry fixtures. */
 export function inlineChannelPluginEntryFactorySource(): string {
   return `function defineChannelPluginEntry(options) {
   return {
@@ -76,7 +72,6 @@ export function inlineChannelPluginEntryFactorySource(): string {
 `;
 }
 
-/** Creates a unique directory under the shared loader fixture root. */
 export function makeTempDir() {
   const dir = path.join(fixtureRoot, `case-${tempDirIndex++}`);
   mkdirSafe(dir);
@@ -116,7 +111,6 @@ export function useNoBundledPlugins() {
   delete process.env.OPENCLAW_BUNDLED_PLUGINS_DIR;
 }
 
-/** Builds and loads one workspace-scoped bundled-plugin fixture. */
 export function loadBundleFixture(params: {
   pluginId: string;
   build: (bundleRoot: string) => void;
