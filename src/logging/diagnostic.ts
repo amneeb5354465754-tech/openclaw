@@ -1339,7 +1339,6 @@ export function stopDiagnosticHeartbeat() {
   uninstallDiagnosticStabilityFatalHook();
 }
 
-/** Returns tracked diagnostic session count for tests. */
 export function getDiagnosticSessionStateCountForTest(): number {
   return getDiagnosticSessionStateCountForTestImpl();
 }

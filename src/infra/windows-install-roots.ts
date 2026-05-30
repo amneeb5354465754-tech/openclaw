@@ -236,7 +236,6 @@ export function getWindowsProgramFilesRoots(
   return result;
 }
 
-/** Reset registry/file probes and process cache for Windows root tests. */
 export function resetWindowsInstallRootsForTests(
   overrides: WindowsInstallRootsTestOverrides = {},
 ): void {

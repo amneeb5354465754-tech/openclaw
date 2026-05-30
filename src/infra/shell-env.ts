@@ -322,7 +322,6 @@ export function getShellPathFromLoginShell(opts: {
   return cachedShellPath;
 }
 
-/** Reset login-shell caches so tests can vary env, shell, and exec probes. */
 export function resetShellPathCacheForTests(): void {
   cachedShellPath = undefined;
   cachedEtcShells = undefined;

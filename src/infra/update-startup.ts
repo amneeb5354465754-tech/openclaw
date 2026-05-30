@@ -54,7 +54,6 @@ export type UpdateAvailable = {
 
 let updateAvailableCache: UpdateAvailable | null = null;
 
-/** Return the current process cache of the latest available package update. */
 export function getUpdateAvailable(): UpdateAvailable | null {
   return updateAvailableCache;
 }

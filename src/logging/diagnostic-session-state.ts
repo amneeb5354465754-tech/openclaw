@@ -193,7 +193,6 @@ export function peekDiagnosticSessionState(ref: SessionRef): SessionState | unde
   );
 }
 
-/** Returns the number of tracked diagnostic session states for tests. */
 export function getDiagnosticSessionStateCountForTest(): number {
   return diagnosticSessionStates.size;
 }
